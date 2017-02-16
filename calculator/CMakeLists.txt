@@ -1,0 +1,4 @@
+add_library(cal cal.cpp)
+install(DIRECTORY ./ DESTINATION ${CMAKE_BINARY_DIR}/include    FILES_MATCHING PATTERN
+"*.svn" EXCLUDE PATTERN "*.h")
+install(TARGETS cal ARCHIVE DESTINATION ${CMAKE_BINARY_DIR}/lib)

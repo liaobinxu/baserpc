@@ -1,0 +1,46 @@
+include_directories(${CMAKE_BINARY_DIR}/include)
+link_directories(${CMAKE_BINARY_DIR}/lib)
+ADD_LIBRARY(protobuf STATIC IMPORTED)
+SET_TARGET_PROPERTIES(
+    protobuf PROPERTIES 
+    IMPORTED_LOCATION ${CMAKE_BINARY_DIR}/lib/libprotobuf.a
+)
+
+ADD_LIBRARY(phxrpc STATIC IMPORTED)
+SET_TARGET_PROPERTIES(
+    phxrpc PROPERTIES
+    IMPORTED_LOCATION ${CMAKE_BINARY_DIR}/lib/libphxrpc.a
+)
+
+add_executable(protoc IMPORTED)
+SET_TARGET_PROPERTIES(
+    protoc PROPERTIES
+    IMPORTED_LOCATION ${CMAKE_BINARY_DIR}/bin/protoc
+)
+
+add_executable(phxrpc_pb2service IMPORTED)
+SET_TARGET_PROPERTIES(
+    phxrpc_pb2service PROPERTIES
+    IMPORTED_LOCATION ${CMAKE_BINARY_DIR}/bin/phxrpc_pb2service
+)
+
+add_executable(phxrpc_pb2server IMPORTED)
+SET_TARGET_PROPERTIES(
+    phxrpc_pb2server PROPERTIES
+    IMPORTED_LOCATION ${CMAKE_BINARY_DIR}/bin/phxrpc_pb2server
+)
+
+add_executable(phxrpc_pb2client IMPORTED)
+SET_TARGET_PROPERTIES(
+    phxrpc_pb2client PROPERTIES
+    IMPORTED_LOCATION ${CMAKE_BINARY_DIR}/bin/phxrpc_pb2client
+)
+
+add_executable(phxrpc_pb2tool IMPORTED)
+SET_TARGET_PROPERTIES(
+    phxrpc_pb2tool PROPERTIES
+    IMPORTED_LOCATION ${CMAKE_BINARY_DIR}/bin/phxrpc_pb2tool
+)
+
+#https://cmake.org/Wiki/CMake/Tutorials/How_to_create_a_ProjectConfig.cmake_file
+set(BASERPC_INCLUDE_DIRS "@CONF_INCLUDE_DIRS@")
